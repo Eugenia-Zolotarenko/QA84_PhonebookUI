@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Regression" verbose="1">
+    <test name="positive">
+        <classes>
+            <class name="de.phonebook.test.HomePageTests"/>
+            <class name="de.phonebook.test.LoginTests">
+                <methods>
+                    <exclude name=".*Negative.*"></exclude>
+                </methods>
+            </class>
+            <class name="de.phonebook.test.AddContactTest"/>
+            <class name="de.phonebook.test.RemoveContactTest"/>
+        </classes>
+    </test>
+</suite>
