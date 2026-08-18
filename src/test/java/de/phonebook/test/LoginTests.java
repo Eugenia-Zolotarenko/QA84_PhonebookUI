@@ -1,6 +1,7 @@
 package de.phonebook.test;
 
 import de.phonebook.core.TestBase;
+import de.phonebook.data.UserData;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -16,8 +17,8 @@ public class LoginTests extends TestBase {
     public void loginRegisteredUserPositiveTest(){
         app.getUser().clickOnLoginLink();
         app.getUser().fillLoginRegisterForm(new de.phonebook.model.User()
-                        .setEmail("create@test.account")
-                        .setPassword("As11234&"));
+                        .setEmail(UserData.EMAIL)
+                        .setPassword(UserData.PASSWORD));
         app.getUser().clickOnLoginButton();
         Assert.assertTrue(app.getUser().isSignOutButtonPresent());
     }
@@ -27,7 +28,7 @@ public class LoginTests extends TestBase {
         app.getUser().clickOnLoginLink();
         app.getUser().fillLoginRegisterForm(new de.phonebook.model.User()
                      .setEmail("create1@test.account")
-                     .setPassword( "As11234&"));
+                     .setPassword(UserData.PASSWORD));
         app.getUser().clickOnLoginButton();
         Assert.assertTrue(app.getUser().isAlertPresent());
     }
@@ -36,7 +37,7 @@ public class LoginTests extends TestBase {
     public void loginUserIncorrectPasswordNegativeTest(){
         app.getUser().clickOnLoginLink();
         app.getUser().fillLoginRegisterForm(new de.phonebook.model.User()
-                    .setEmail("create@test.account")
+                    .setEmail(UserData.EMAIL)
                     .setPassword("As11234&1"));
         app.getUser().clickOnLoginButton();
         Assert.assertTrue(app.getUser().isAlertPresent());
@@ -46,7 +47,7 @@ public class LoginTests extends TestBase {
     public void loginUserEmptyPasswordNegativeTest(){
         app.getUser().clickOnLoginLink();
         app.getUser().fillLoginRegisterForm(new de.phonebook.model.User()
-                        .setEmail("create@test.account")
+                        .setEmail(UserData.EMAIL)
                         .setPassword(""));
         app.getUser().clickOnLoginButton();
         Assert.assertTrue(app.getUser().isAlertPresent());
@@ -57,7 +58,7 @@ public class LoginTests extends TestBase {
         app.getUser().clickOnLoginLink();
         app.getUser().fillLoginRegisterForm(new de.phonebook.model.User()
                         .setEmail("")
-                        .setPassword( "As11234&1"));
+                        .setPassword(UserData.PASSWORD));
         app.getUser().clickOnLoginButton();
         Assert.assertTrue(app.getUser().isAlertPresent());
 

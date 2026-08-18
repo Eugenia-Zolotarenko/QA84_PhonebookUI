@@ -36,8 +36,13 @@ public class ContactHelper extends BaseHelper {
         click(By.cssSelector("[href='/add']"));
     }
 
-    public boolean verifyByMane(String text) {
-        List<WebElement> contacts = driver.findElements(By.cssSelector("h2"));
+    public boolean verifyByName(String text) {
+        if (verifyText(text, By.cssSelector("h2"))) return true;
+        return false;
+    }
+
+    public boolean verifyText(String text, By locator) {
+        List<WebElement> contacts = driver.findElements(locator);
         for(WebElement contact: contacts){
             if(contact.getText().contains(text))
                 return true;
@@ -57,5 +62,11 @@ public class ContactHelper extends BaseHelper {
           return driver.findElements(By.cssSelector(".add_form__2rsm2 button")).size();
         }
         return 0;
+    }
+
+    public boolean verifyByPhone(String text) {
+        if (verifyText(text, By.cssSelector("h3"))) return true;
+
+        return false;
     }
 }

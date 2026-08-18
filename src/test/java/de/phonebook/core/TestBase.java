@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 public class TestBase {
 
@@ -28,14 +29,14 @@ public class TestBase {
     }
 
     //@AfterMethod(enabled = false)
-    @AfterSuite(enabled = true)
+    @AfterSuite(enabled = false)
     public void tearDown() {
         app.stop();
     }
 
     @BeforeMethod
-    public void startTest(Method method){
-        logger.info("start test {}", method.getName());
+    public void startTest(Method method, Object[] p){
+        logger.info("start test {} with data: {}", method.getName(), Arrays.asList(p));
     }
 
     @AfterMethod
